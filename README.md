@@ -42,17 +42,18 @@ Before you begin, ensure you have the following installed:
 ### Installation
 
 1. **Clone the Repository:**
-   git clone https://github.com/your-username/your-repository-name.git
+- git clone https://github.com/your-username/your-repository-name.git
    cd your-repository-name
 2. **Create a Virtual Environment:**
-   python -m venv venv
-3.**Activate the Virtual Environment:**
-   **On Windows**
+  -python -m venv venv
+4. **Activate the Virtual Environment:**
+  -**On Windows**
    .\venv\Scripts\activate
    **On macOS/Linux**
    source venv/bin/activate
-4.**Install Dependencies:**
-   pip install -r requirements.txt
+5. **Install Dependencies:**
+  -pip install -r requirements.txt
+
    
 ### Database Setup
 **Start MongoDB Compass:**
