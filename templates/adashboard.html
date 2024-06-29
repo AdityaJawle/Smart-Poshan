@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+
+
+
+{% block body %}
+
+<header>
+    <a href="#" class="logo" ><img src="../static/image/logo3.png" class="logo3"></a>
+    <div class="user">
+        <h3 class="dashboar">Dashboard</h3>
+        <p class="post">Hello, Admin</p>
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li><a class="active" href="#home" data-section="home">Home</a></li>
+            <li><a href="#userdat" data-section="userdat">User Details</a></li>
+            <li><a href="#admindat" data-section="admindat">Admin Details</a></li>
+            <li><a href="#report" data-section="report">Report Details</a></li>
+        </ul>
+    </nav>
+    <a href="/user/signout" class="btn btn--secondary">Log out</a>
+</header>
+
+
+<section class="home" id="home">
+    <div class="card-wrapper">
+        <div class="card">      
+            <h1 class="center">Dashboard</h1>       
+            <p class="center">Hello User</p>
+        </div>
+        <div class="card">
+            <h2 class="center">Your Info</h2>
+            <P>
+                <strong>Name: </strong> {{ session['user']['name']}}<br>
+                <strong>Email: </strong> {{ session['user']['email']}}<br>
+                <strong>Username: </strong> {{ session['user']['username']}}<br>
+            </P>
+        </div>
+    </div>
+</section>
+
+
+<section class="userdat" id="userdat">
+    <table id="data-container">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>School</td>
+                <td>Email</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody id="user-data-body"></tbody>
+    </table>
+    <button id="signup-data" class="btn">User Registration</button>
+
+    <div class="signup-form" id="signupForm">
+        <form name="signup_form">
+            <h3 class="center">Create an Account</h3>
+            <label for="name">Name</label>
+            <input type="text" name="name" class="field" required>
+            <label for="school">School</label>
+            <input type="text" name="school" class="field" required>
+            <label for="name">Email</label>
+            <input type="email" name="email" class="field" required>
+            <label for="name">Password</label>
+            <input type="password" name="password" class="field" required>
+            <label for="state">State</label>
+            <input type="text" name="state" class="field" required>
+            <label for="district">District</label>
+            <input type="text" name="district" class="field" required>
+            <p class="error error--hidden"></p>
+            <input type="submit" value="Sign Up" class="btn">
+            <i class="fas fa-times"></i>
+        </form>
+    </div>
+</section>
+
+<!-- Admin Section -->
+<section class="admindat" id="admindat">
+    <table id="ad-container">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Username</td>
+                <td>Email</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody id="ad-body"></tbody>
+    </table>
+    <button id="adsignup-data" class="btn">Admin Registration</button>
+
+    <div class="adsignup-form" id="adsignupForm">
+        <form name="adsignup_form">
+            <h3 class="center">Create an Account</h3>
+            <label for="name">Name</label>
+            <input type="text" name="name" class="field" required>
+            <label for="username">Username</label>
+            <input type="text" name="username" class="field" required>
+            <label for="name">Email</label>
+            <input type="email" name="email" class="field" required>
+            <label for="name">Password</label>
+            <input type="password" name="password" class="field" required>
+            <label for="state">State</label>
+            <input type="text" name="state" class="field" required>
+            <label for="district">District</label>
+            <input type="text" name="district" class="field" required>
+            <p class="error error--hidden"></p>
+            <input type="submit" value="Sign Up" class="btn">
+            <i class="fas fa-times"></i>
+        </form>
+    </div>
+</section>
+
+<section class="report" id="report">
+    <div class="container_small">
+        <div class="mapimg">
+        <img src="https://www.mapsofindia.com/images2/india-map.jpg" alt="india-map" usemap="#india-map">
+        <map id="india-map" name="india-map">
+        <area id="maharashtraArea" shape="poly" alt="Maharashtra Map" coords="134,561,139,561,142,565,146,560,151,562,152,555,152,554,154,553,154,550,150,549,150,544,149,542,152,541,154,539,156,542,158,541,159,537,165,535,167,530,169,531,173,534,174,531,178,530,180,532,182,531,182,531,182,526,181,522,182,519,183,521,188,520,189,523,194,523,195,523,196,522,199,523,201,523,199,517,204,512,205,512,207,514,209,513,211,509,213,508,215,502,219,502,222,496,225,495,226,496,226,497,226,499,228,499,230,492,233,492,234,488,237,485,239,484,234,481,237,477,237,474,240,472,242,475,246,474,245,472,243,471,245,470,248,469,247,464,248,462,248,459,248,458,250,460,257,461,260,462,261,464,263,464,265,467,269,468,270,469,270,469,270,465,276,468,279,468,280,466,283,466,288,469,286,476,286,478,288,480,287,485,291,488,295,489,297,484,295,480,299,472,301,471,306,474,308,473,309,471,308,470,310,469,308,468,304,465,301,461,299,460,301,455,301,452,298,452,299,449,304,447,304,440,302,440,302,437,301,433,299,430,299,427,302,425,305,422,299,420,297,415,293,414,290,416,286,417,284,415,279,416,277,417,277,414,270,413,269,414,263,415,262,419,252,418,250,415,247,415,244,419,237,421,228,420,227,417,230,415,231,414,230,411,224,410,222,413,218,412,212,415,209,421,207,424,204,425,203,428,200,428,196,427,195,423,195,421,193,421,174,420,168,414,163,414,158,412,156,405,155,403,152,406,149,405,149,404,140,408,143,413,140,414,142,415,152,414,152,416,152,417,146,417,142,421,140,423,140,424,137,425,141,428,144,434,140,436,140,439,136,439,131,436,131,441,130,447,125,449,125,452,123,452,119,451,119,449,117,448,116,451,114,451,112,455,115,473,116,489,121,511,125,537,130,555" href="" title="Maharashtra Map"/>
+        </map>
+        </div>
+        </div>
+        </div>
+        <div class="dropdown-container" id="maharashtraDropdown">
+            <label for="district">Select District:</label>
+            <select id="district" onchange="fetchDistrictData()">
+                <option value="Ahmednagar">Ahmednagar</option>
+                <option value="Akola">Akola</option>
+                <option value="Amravati">Amravati</option>
+                <option value="Aurangabad">Aurangabad</option>
+                <option value="Beed">Beed</option>
+                <option value="Bhandara">Bhandara</option>
+                <option value="Buldhana">Buldhana</option>
+                <option value="Chandrapur">Chandrapur</option>
+                <option value="Dhule">Dhule</option>
+                <option value="Gadchiroli">Gadchiroli</option>
+                <option value="Gondia">Gondia</option>
+                <option value="Hingoli">Hingoli</option>
+                <option value="Jalgaon">Jalgaon</option>
+                <option value="Jalna">Jalna</option>
+                <option value="Kolhapur">Kolhapur</option>
+                <option value="Latur">Latur</option>
+                <option value="Mumbai">Mumbai City</option>
+                <option value="Mumbai Suburban">Mumbai Suburban</option>
+                <option value="Nagpur">Nagpur</option>
+                <option value="Nanded">Nanded</option>
+                <option value="Nandurbar">Nandurbar</option>
+                <option value="Nashik">Nashik</option>
+                <option value="Osmanabad">Osmanabad</option>
+                <option value="Palghar">Palghar</option>
+                <option value="Parbhani">Parbhani</option>
+                <option value="Pune">Pune</option>
+                <option value="Raigad">Raigad</option>
+                <option value="Ratnagiri">Ratnagiri</option>
+                <option value="Sangli">Sangli</option>
+                <option value="Satara">Satara</option>
+                <option value="Sindhudurg">Sindhudurg</option>
+                <option value="Solapur">Solapur</option>
+                <option value="Thane">Thane</option>
+                <option value="Wardha">Wardha</option>
+                <option value="Washim">Washim</option>
+                <option value="Yavatmal">Yavatmal</option>
+            </select>
+        </div>
+        <div id="schools-data" class="schools-data" style="display: none;">
+            <table class="schoolList" id="schoolList">
+                <thead>
+                    <tr>
+                        <td>Sr. No</td>
+                        <td>School Name</td>
+                        <td>Email</td>
+                        <td>District</td>
+                        <td>Select Date</td>
+                        <td>Report</td>
+                    </tr>
+                </thead>
+                <tbody class="schoolListBody">
+                    <!-- Table content will be dynamically generated -->
+                </tbody>
+                
+            </table>
+        </div>
+        
+
+        
+</section>
+{% endblock body %}

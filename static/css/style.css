@@ -1,0 +1,647 @@
+:root{
+  --gradient:linear-gradient(90deg, #0f71f1, #0818f6);
+}
+
+*{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  border: none; outline: none;
+  text-decoration: none;
+  transition: all .2s linear;
+}
+
+*::selection{
+  background: #0f71f1;
+  color: #fff;
+}
+
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar{
+  width: 1.5rem;
+}
+
+html::-webkit-scrollbar-track{
+  background: #333;
+}
+
+html::-webkit-scrollbar-thumb{
+  background: linear-gradient( #0f71f1, #0818f6);
+}
+
+
+section{
+  min-height: 100vh;
+  padding:1rem 7%;
+  padding-top: 6rem;;
+}
+
+.btn{
+  padding: .7rem 3rem;
+  font-size: 2rem;
+  color: #fff;
+  background:var(--gradient);
+  border-radius: 5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  box-shadow: 0 .1rem .3rem rgba(0,0,0,.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.btn::before{
+  content: '';
+  position: absolute;
+  top:-1rem; left:-100%;
+  background: #fff9;
+  height: 150%;
+  width: 20%;
+  transform: rotate(25deg);
+  z-index: -1;
+}
+
+.btn:hover::before{
+  transition: .2s linear;
+  left: 120%;
+}
+.heading{
+  color: #444;
+  font-size: 5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+header{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 1000;
+  padding: 1.5rem 7%;
+  background:#fff;
+  box-shadow: 0 .1rem .3rem rgba(0,0,0,.3);
+}
+
+header .logo p2{
+  color: blue;
+  font-size: 2.5rem;
+}
+header .logo p1{
+  color: orange;
+  font-size: 2.5rem;
+}
+header .logo{
+  display: flex;
+  align-items: center;
+}
+header .logo3{
+  height: auto;
+  width: 15vh;
+}
+header .navbar ul{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+header .navbar ul li{
+   margin:0 1rem;
+}
+
+header .navbar ul li a{
+  font-size: 2rem;
+  color: #444;
+}
+
+header .navbar ul li a:hover{
+  color: #0f71f1;
+}
+
+header #login{
+  font-size: 3rem;
+  color: #333;
+  cursor: pointer;
+}
+
+header #login:hover{
+  color: #0f71f1;
+}
+
+header #admin{
+  font-size: 3rem;
+  color: #333;
+  cursor: pointer;
+}
+
+header #admin:hover{
+  color: #0f71f1;
+}
+
+header #signup{
+  font-size: 3rem;
+  color: #333;
+  cursor: pointer;
+}
+
+header #signup:hover{
+  color: #0f71f1;
+}
+
+header #adsignup{
+  font-size: 3rem;
+  color: #333;
+  cursor: pointer;
+}
+
+header #adsignup:hover{
+  color: #0f71f1;
+}
+
+
+header #menu{
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+.login-form{
+  height:100%;
+  width: 100%;
+  position: fixed;
+  top:-120%; left:0;
+  z-index: 1000;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form.popup{
+  top:0;
+}
+
+.login-form form{
+  width: 35rem;
+  background: #fff;
+  margin:0 2rem;
+  padding:1rem 3rem;
+  border-radius: .5rem;
+  box-shadow: 0 .1rem .3rem #333;
+  position: relative;
+}
+label {
+  margin: 0 0 5px;
+  padding: 5px;
+  font-size: 25px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  color: var(--grey-medium);
+  display: block;
+}
+
+
+.login-form form h3{
+  font-size: 3rem;
+  color: #0f71f1;
+  padding:1rem 0;
+}
+
+.login-form form p{
+  font-size: 25px;
+  padding: 3px;
+}
+
+.login-form form .box{
+  width: 100%;
+  padding:1rem 0;
+  margin:1rem 0;
+  border-bottom: .2rem solid #666;
+  font-size: 1.6rem;
+  color: #333;
+  text-transform: none;
+}
+.login-form form .box::placeholder{
+  text-transform: capitalize;
+}
+
+.login-form form .box:focus{
+  border-color: #0f71f1;
+}
+
+.login-form form .box:nth-child(3){
+  margin-bottom: 5rem;
+}
+
+
+.login-form form .btn{
+  width: 100%;
+  margin:2rem 0;
+}
+
+.login-form form .btn:hover{
+  background: #444;
+}
+
+.login-form form .fa-times{
+  position: absolute;
+  top:1.5rem; right:2rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.login-form form .fa-times:hover{
+  color: #444;
+}
+
+.admin-login-form{
+  height:100%;
+  width: 100%;
+  position: fixed;
+  top:-120%; left:0;
+  z-index: 1000;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-login-form.popup{
+  top:0;
+}
+
+.admin-login-form form{
+  width: 35rem;
+  background: #fff;
+  margin:0 2rem;
+  padding:1rem 3rem;
+  border-radius: .5rem;
+  box-shadow: 0 .1rem .3rem #333;
+  position: relative;
+}
+
+.admin-login-form form h3{
+  font-size: 3rem;
+  color: #0f71f1;
+  padding:1rem 0;
+}
+
+.admin-login-form form p{
+  font-size: 25px;
+  padding: 3px;
+}
+
+.admin-login-form form .box{
+  width: 100%;
+  padding:1rem 0;
+  margin:1rem 0;
+  border-bottom: .2rem solid #666;
+  font-size: 1.6rem;
+  color: #333;
+  text-transform: none;
+}
+.admin-login-form form .box::placeholder{
+  text-transform: capitalize;
+}
+
+.admin-login-form form .box:focus{
+  border-color: #0f71f1;
+}
+
+.admin-login-form form .box:nth-child(3){
+  margin-bottom: 5rem;
+}
+
+
+.admin-login-form form .btn{
+  width: 100%;
+  margin:2rem 0;
+}
+
+.admin-login-form form .btn:hover{
+  background: #444;
+}
+
+.admin-login-form form .fa-times{
+  position: absolute;
+  top:1.5rem; right:2rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.admin-login-form form .fa-times:hover{
+  color: #444;
+}
+
+.signup-form{
+  height:100%;
+  width: 100%;
+  position: fixed;
+  top:-120%; left:0;
+  z-index: 1000;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-form.popup{
+  top:0;
+}
+
+.signup-form form{
+  width: 35rem;
+  background: #fff;
+  margin:0 2rem;
+  padding:1rem 3rem;
+  border-radius: .5rem;
+  box-shadow: 0 .1rem .3rem #333;
+  position: relative;
+}
+
+.signup-form form h3{
+  font-size: 3rem;
+  color: #0f71f1;
+  padding:1rem 0;
+}
+
+.signup-form form p{
+  font-size: 25px;
+  padding: 3px;
+}
+
+.signup-form form .box{
+  width: 100%;
+  padding:1rem 0;
+  margin:1rem 0;
+  border-bottom: .2rem solid #666;
+  font-size: 1.6rem;
+  color: #333;
+  text-transform: none;
+}
+.signup-form form .box::placeholder{
+  text-transform: capitalize;
+}
+
+.signup-form form .box:focus{
+  border-color: #0f71f1;
+}
+
+.signup-form form .box:nth-child(3){
+  margin-bottom: 5rem;
+}
+
+
+.signup-form form .btn{
+  width: 100%;
+  margin:2rem 0;
+}
+
+.signup-form form .btn:hover{
+  background: #444;
+}
+
+.signup-form form .fa-times{
+  position: absolute;
+  top:1.5rem; right:2rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.signup-form form .fa-times:hover{
+  color: #444;
+}
+
+/* Admin Signup */
+
+.adsignup-form{
+  height:100%;
+  width: 100%;
+  position: fixed;
+  top:-120%; left:0;
+  z-index: 1000;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adsignup-form.popup{
+  top:0;
+}
+
+.adsignup-form form{
+  width: 35rem;
+  background: #fff;
+  margin:0 2rem;
+  padding:1rem 3rem;
+  border-radius: .5rem;
+  box-shadow: 0 .1rem .3rem #333;
+  position: relative;
+}
+
+.adsignup-form form h3{
+  font-size: 3rem;
+  color: #0f71f1;
+  padding:1rem 0;
+}
+
+.adsignup-form form p{
+  font-size: 25px;
+  padding: 3px;
+}
+
+.adsignup-form form .box{
+  width: 100%;
+  padding:1rem 0;
+  margin:1rem 0;
+  border-bottom: .2rem solid #666;
+  font-size: 1.6rem;
+  color: #333;
+  text-transform: none;
+}
+.adsignup-form form .box::placeholder{
+  text-transform: capitalize;
+}
+
+.adsignup-form form .box:focus{
+  border-color: #0f71f1;
+}
+
+.adsignup-form form .box:nth-child(3){
+  margin-bottom: 5rem;
+}
+
+
+.adsignup-form form .btn{
+  width: 100%;
+  margin:2rem 0;
+}
+
+.adsignup-form form .btn:hover{
+  background: #444;
+}
+
+.adsignup-form form .fa-times{
+  position: absolute;
+  top:1.5rem; right:2rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.adsignup-form form .fa-times:hover{
+  color: #444;
+}
+
+.field {
+  margin: 0 0 24px;
+  padding: 11px 16px 9px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--almost-black);
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  display: block;
+  background: var(--almost-white);
+  transition: border-color .15s ease;
+}
+
+.field:focus {
+  border-color: var(--grey-medium);
+  outline: none;
+}
+
+
+.home{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  background:url(../image/cover.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  text-align: center;
+}
+
+.home h1{
+  font-size: 6rem;
+  color: #666;
+}
+  
+.home p{
+  font-size: 1.9rem;
+  color:( beige);
+  padding:1rem 0;
+  width: 70rem;
+}
+
+.about{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about .image{
+  flex: 1 1 40rem;
+}
+
+.about .image img{
+  height: 65vh;
+  width: 100%;
+}
+
+.about .content{
+  flex: 1 1 40rem;
+}
+
+.about .content h3{
+  font-size: 3.5rem;
+  color: #666;
+  margin-left: 15px;
+}
+
+.about .content h3 p{
+  font-size: 15px;
+  color: #666;
+  padding:1rem 0;
+}
+
+.about .content a{
+  margin-left: 15px;
+}
+
+.contact{
+  background: #111;
+}
+
+.contact .heading{
+  color: #fff;
+}
+
+.contact .row{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact .row form{
+  flex:1 1 50rem;
+  background: #222;
+  padding:2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  align-items: flex-start;
+}
+
+.contact .row form .box{
+  height: auto;
+  width:49%;
+  border:.1rem solid #eee;
+  padding:0 1rem;
+  margin:1rem 0;
+  font-size: 1.7rem;
+  color: #fff;
+  background:none;
+  text-transform: none;
+}
+
+.contact .row form .box:focus{
+  border-color: #13e9d7;
+}
+
+.contact .row form .box::placeholder{
+  text-transform: capitalize;
+}
+
+.contact .row form .address{
+  height:15rem;
+  padding:1rem;
+  resize: none;
+  width:100%;
+}
+
+.contact .row form .btn:hover{
+  background: #fff;
+  color: #333;
+}

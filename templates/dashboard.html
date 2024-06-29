@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+
+
+
+{% block body %}
+
+<header>
+    <a href="#" class="logo" ><img src="../static/image/logo3.png" class="logo3"></a>
+    <div class="user">
+        <h3 class="dashboar">Dashboard</h3>
+        <p class="post">Hello, School</p>
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li><a class="active" href="#home" data-section="home">Home</a></li>
+            <li><a href="#menu" data-section="menu">Menu</a></li>
+            <li><a href="#stud_records" data-section="stud_records">Student Records</a></li>
+            <li><a href="#up_ig" data-section="up_ig">Upload Images</a></li>
+            <li><a href="#stud_att" data-section="stud_att">Student Attendence</a></li>
+            <li></li>
+        </ul>
+    </nav>
+    <a href="/user/signout" class="btn btn--secondary">Log out</a>
+</header>
+
+
+<section class="home" id="home">
+    <div class="card-wrapper">
+        <div class="card">      
+            <h1 class="center">Dashboard</h1>       
+            <p class="center">Hello User</p>    
+        </div>
+        <div class="card">
+            <h2 class="center">Your Info</h2>
+            <P>
+                <strong>Name: </strong> {{ session['user']['name']}}<br>
+                <strong>Email: </strong> {{ session['user']['email']}}<br>
+                <strong>School: </strong> {{ session['user']['school']}}<br>
+            </P>
+        </div>
+    </div>
+</section>
+
+
+<section class="menu " id="menu">
+    <h1>Class I-IV</h1>
+    <table class="weekly-menu">
+        <tr>
+            <th>Day</th>
+            <th>Menu Item</th>
+        </tr>
+        <tr>
+            <td>Monday</td>
+            <td>Khichdi , Ladu</td>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+            <td>Chana Bhaji, Ladu</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td>Lapsi, Ladu</td>
+        </tr>
+        <tr>
+            <td>Thursday</td>
+            <td>Dal Rice, Ladu</td>
+        </tr>
+        <tr>
+            <td>Friday</td>
+            <td>Khichdi , Ladu</td>
+        </tr>
+        <tr>
+            <td>Saturday</td>
+            <td>Special</td>
+        </tr>
+
+    </table>
+    <h1>Class V-VIII</h1>
+    <table class="weekly-menu">
+        <tr>
+            <th>Day</th>
+            <th>Menu Item</th>
+        </tr>
+        <tr>
+            <td>Monday</td>
+            <td>Khichdi</td>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+            <td>Chana Bhaji</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td>Lapsi</td>
+        </tr>
+        <tr>
+            <td>Thursday</td>
+            <td>Dal Rice</td>
+        </tr>
+        <tr>
+            <td>Friday</td>
+            <td>Khichdi</td>
+        </tr>
+        <tr>
+            <td>Saturday</td>
+            <td>Special</td>
+        </tr>
+
+    </table>
+</section>
+
+<section class="stud_records" id="stud_records">
+    <h1 class="center">Student Records</h1>
+
+    <label for="classDropdown">Select Class:</label>
+    <select id="classDropdown" onchange="updateDisplay()">
+        <option value="Class 1">Class I</option>
+        <option value="Class 2">Class II</option>
+        <option value="Class 3">Class III</option>
+        <option value="Class 4">Class IV</option>
+        <option value="Class 5">Class V</option>
+        <option value="Class 6">Class VI</option>
+        <option value="Class 7">Class VII</option>
+        <option value="Class 8">Class VIII</option>
+    </select>
+
+    <h2>Student Details:</h2>
+    <table id="studentList">
+        <thead>
+            <tr>
+                <th>Sr. no</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>ID Number</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>BMI</th>
+            </tr>
+        </thead>
+        <tbody id="studentListBody">
+            <!-- Data will be dynamically added here -->
+        </tbody>
+    </table>
+    <button id="add-data" class="btn">Add Details</button>
+
+    <div class="add-det" id="addDetForm">
+        <form name="add_det" onsubmit="return addStudentFromForm()">
+            <h3 class="center">Add Student Details</h3>
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" class="field" required>
+            <label for="lname">Last Name</label>
+            <input type="text" name="lname" class="field" required>
+            <label for="roll_no">ID Number</label>
+            <input type="number" name="roll_no" class="field" required>
+            <label for="height">Height</label>
+            <input type="number" name="height" class="field" required>
+            <label for="weight">Weight</label>
+            <input type="number" name="weight" class="field" required>
+            <input type="hidden" id="schoolName" value="{{ session['user']['school'] }}">
+            <input type="submit" value="Add Details" class="btn">
+            <i class="fas fa-times"></i>
+        </form>
+    </div>
+    
+    
+</section>
+
+<section class="up_ig" id="up_ig">
+    <table class="file-table">
+        <tr>
+            <th>Sr. Info</th>
+            <th>Upload File</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>1. Upload Meal</td>
+            <td>
+                <div class="upload-container">
+                    <form action="/" method="POST" enctype="multipart/form-data">
+                        <!-- <label for="file">Choose a meal image:</label> -->
+                        <input type="file" name="file" id="file" accept=".jpg, .jpeg, .png" required>
+                        <button type="submit" id="meal-upload-btn">Upload Image</button>
+                    </form>
+                </div>
+            </td>
+            <td>
+                <div class="uploaded-file">
+                    {% if uploaded_image_path %}
+                    <img src="data:image/jpeg;base64,{{ image_data }}" alt="Uploaded Image">
+                    {% else %}
+                        <p>No image uploaded.</p>
+                    {% endif %}
+                </div>
+                
+                <div>
+                    {% if predicted_class is not none %}    
+                        <p class="food-item">{{ food_item }}</p>
+                        <p class="nutritional-info">Nutritional Information - Calories: {{ calories }} | Protein: {{ protein }}</p>
+                    {% else %}
+                        <p>No prediction available.</p>
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+    </table>
+</section>
+
+<section class="stud_att" id="stud_att">
+    <table id="studentList">
+        <thead>
+            <tr>
+                <th>Sr. no</th>
+                <th>Class</th>
+                <th>Present</th>
+                <th>Absent</th>
+                <th>Upload Image</th>
+                <th>Uploaded Image</th>
+            </tr>
+        </thead>
+        <tbody id="studentRecordBody">
+            <!-- Data will be dynamically added here -->
+        </tbody>
+    </table>
+</section>
+
+
+</div>
+
+
+
+
+
+{% endblock body %}
