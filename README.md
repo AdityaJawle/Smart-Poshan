@@ -42,7 +42,7 @@ Before you begin, ensure you have the following installed:
 ### Installation
 
 1. **Clone the Repository:**
-- git clone https://github.com/your-username/your-repository-name.git
+- git clone https://github.com/AdityaJawle/Smart-Poshan.git
 - cd your-repository-name
 2. **Create a Virtual Environment:**
 - python -m venv venv
